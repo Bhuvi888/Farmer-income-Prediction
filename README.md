@@ -29,9 +29,21 @@ This project aims to predict farmer income to assess creditworthiness, using Lig
     pip install -r requirements.txt
     ```
 
+## License
+
+By participating in the LTF Pearl Anniversary Challenge and submitting a model, participants agree to transfer all intellectual property rights associated with the submitted models to L&T Finance Limited (LTF). LTF retains exclusive rights to use, modify, and integrate the model into their creditworthiness evaluation tools and other related projects. The use of LTF data, including the submitted model and its code, for any commercial and non-commercial publication (blog, tutorials, research publications) requires prior approval and permission from LTF.
+
+## 5. How to Run
+
 ## Usage
 
-To run the full pipeline and generate predictions:
+To run the full pipeline and generate predictions automatically, execute:
+
+```bash
+python run_pipeline.py
+```
+
+Alternatively, you can run each step manually:
 
 1.  **Data Cleaning and Preprocessing:**
     ```bash
