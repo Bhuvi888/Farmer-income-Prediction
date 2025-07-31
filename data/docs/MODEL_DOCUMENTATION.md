@@ -59,6 +59,22 @@ This stage involves creating new features to capture more complex relationships 
 *   **Prediction:** Predictions are generated on the preprocessed test data. Since the target variable was log-transformed, the predictions are inverse-transformed (`np.expm1`) to get the actual income values.
 *   **Output:** The final predictions, along with `FarmerID`, are saved to `predictions/Predicted_Farmer_Income.csv`.
 
+### 3.6. Exploratory Data Analysis (EDA) (`src/eda.py`)
+
+The EDA phase involved visualizing key aspects of the data to understand distributions, relationships, and potential insights.
+
+*   **Distribution of Farmer Income (Log Transformed):**
+    ![Income Distribution](../reports/income_distribution.png)
+    This plot shows the distribution of the log-transformed target variable, helping to understand its spread and identify any anomalies.
+
+*   **Correlation Matrix of Key Features:**
+    ![Correlation Matrix](../reports/correlation_matrix.png)
+    This heatmap visualizes the correlation between important numerical features, highlighting strong positive or negative relationships. Notably, `Total_Land_For_Agriculture` showed a strong correlation with income.
+
+*   **Farmer Income Distribution by State:**
+    ![Income by State](../reports/income_by_state.png)
+    This box plot illustrates the variation in farmer income across different states, revealing regional disparities.
+
 ## 4. Key Results
 
 After implementing the full pipeline, including geographical and seasonal interaction features, the best LightGBM model achieved a MAPE of approximately **1.436%** on the validation set during hyperparameter tuning. This indicates a strong predictive performance on unseen data from the same distribution as the training data.

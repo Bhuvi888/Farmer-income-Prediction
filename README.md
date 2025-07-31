@@ -55,6 +55,14 @@ To run the full pipeline and generate predictions:
 
 ## Results
 
+- **Baseline LightGBM Model (before feature engineering):** MAPE of 1.68%
+- **After Initial Feature Engineering (excluding geographical and seasonal):** MAPE improved to 1.59%
+- **After Initial Hyperparameter Tuning (excluding geographical and seasonal):** MAPE further improved to 1.546%
+- **After Geographical Feature Engineering (retraining):** MAPE improved to approximately 1.47%
+- **After Geographical Feature Engineering (hyperparameter tuning):** MAPE further improved to approximately 1.439%
+- **After Seasonal Interaction Feature Engineering (retraining):** MAPE was approximately 1.472%
+- **After Seasonal Interaction Feature Engineering (hyperparameter tuning):** Final MAPE of approximately 1.436% on the validation set.
+
 - Final predictions are saved in `predictions/Predicted_Farmer_Income.csv`.
 - EDA plots are available in `reports/`.
 - The best-performing model is saved as `models/best_lightgbm_model.pkl`.
