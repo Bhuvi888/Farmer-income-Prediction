@@ -9,7 +9,6 @@ import {
   XAxis,
   YAxis,
   CartesianGrid,
-  LabelList,
 } from "recharts";
 
 const COLORS = ["#10b981", "#f59e0b", "#ef4444", "#6366f1", "#8b5cf6"];
@@ -34,9 +33,8 @@ export default function ChartsSection({ show, result }) {
 
   // Map 5-fold predictions to chart data
   const featureData = (result.fold_predictions || []).map((val, i) => ({
-    name: `F${i + 1}`,
+    name: `Fold ${i + 1}`,
     value: val,
-    fill: COLORS[i % COLORS.length],
   }));
 
   return (
@@ -91,38 +89,21 @@ export default function ChartsSection({ show, result }) {
       <div className="bg-white rounded-2xl shadow-lg shadow-gray-200/50 border border-gray-100 p-6">
         <div className="flex items-center justify-between mb-4">
           <h3 className="text-sm font-semibold text-gray-800">
-            Model Stability (All Folds)
+            Model Stability (5-Fold Predictions)
           </h3>
           <span className="text-[10px] bg-gray-100 px-2 py-0.5 rounded-full text-gray-500">
-            Ensemble Variance
+            Ensemble Consistency
           </span>
         </div>
         <ResponsiveContainer width="100%" height={280}>
-          <BarChart
-            data={featureData}
-            layout="vertical"
-            margin={{ left: 5, right: 40 }}
-          >
-            <CartesianGrid
-              strokeDasharray="3 3"
-              stroke="#f3f4f6"
-              horizontal={false}
-            />
-            <XAxis
-              type="number"
-              hide={false}
-              tick={{ fontSize: 9, fill: "#9ca3af" }}
-              axisLine={false}
-              tickLine={false}
-              tickFormatter={(val) => `₹${val / 1000}k`}
-            />
+          <BarChart data={featureData} layout="vertical" margin={{ left: 10 }}>
+            <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
+            <XAxis type="number" tick={{ fontSize: 10 }} hide />
             <YAxis
               type="category"
               dataKey="name"
-              tick={{ fontSize: 11, fontWeight: 500 }}
-              width={30}
-              axisLine={false}
-              tickLine={false}
+              tick={{ fontSize: 11 }}
+              width={50}
             />
             <Tooltip
               contentStyle={{
@@ -133,15 +114,12 @@ export default function ChartsSection({ show, result }) {
               formatter={(val) => `₹${val.toLocaleString()}`}
               cursor={{ fill: "#f9fafb" }}
             />
-            <Bar dataKey="value" radius={[0, 4, 4, 0]} barSize={28}>
-              <LabelList
-                dataKey="value"
-                position="right"
-                formatter={(val) => `₹${(val / 1000).toFixed(0)}k`}
-                style={{ fontSize: 10, fontWeight: 600, fill: "#6b7280" }}
-                offset={10}
-              />
-            </Bar>
+            <Bar
+              dataKey="value"
+              fill="#10b981"
+              radius={[0, 6, 6, 0]}
+              barSize={24}
+            />
           </BarChart>
         </ResponsiveContainer>
       </div>
