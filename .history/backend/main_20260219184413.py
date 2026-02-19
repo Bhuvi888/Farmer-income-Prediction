@@ -10,9 +10,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
 # ── Paths ───────────────────────────────────────────────────
-# ── Paths ───────────────────────────────────────────────────
-CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
-MODEL_DIR = os.path.join(CURRENT_DIR, "models")
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+MODEL_DIR = os.path.join(BASE_DIR, "models")
 DEFAULTS_PATH = os.path.join(MODEL_DIR, "feature_defaults.json")
 
 # ── Load models + defaults at startup ───────────────────────
